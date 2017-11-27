@@ -138,7 +138,7 @@ contract p2pTaxiToken is StandardToken, SafeMath {
      * Token meta data
      */
     string public constant name = "p2pTaxi";
-    string public constant symbol = "P2T";
+    string public constant symbol = "2PT";
     uint public constant decimals = 18;
 
     // total supply
