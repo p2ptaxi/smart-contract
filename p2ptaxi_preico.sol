@@ -11,6 +11,9 @@ preIco
 [3 week: 5 week) => +35% (01-14 jan)
 [5 week: 7 week) => +30% (15-28 jan)
 [7 week: 9 week) => +25% (29-30 jan)
+
+(total < softCap) && (time >= 9 week) => stop ICO & enable refund
+
 */
 
 contract p2pTaxiPreIco {
