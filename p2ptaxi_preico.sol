@@ -52,4 +52,10 @@ contract p2pTaxiPreIco {
     uint public constant preIcoSoftCap2PT= preIcoSoftCapUSD*2;// 2PT = 0.5 USD
     uint public constant preIcoSoftCapEth= preIcoSoftCapUSD*BASE/ETH2USDrate;//
 
+    address owner; // array of managers?
+    
+    function p2pTaxiPreIco() public {
+        owner = msg.sender;
+    }
+
 }
