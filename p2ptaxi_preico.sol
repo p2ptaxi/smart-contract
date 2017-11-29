@@ -52,10 +52,30 @@ contract p2pTaxiPreIco {
     uint public constant preIcoSoftCap2PT= preIcoSoftCapUSD*2;// 2PT = 0.5 USD
     uint public constant preIcoSoftCapEth= preIcoSoftCapUSD*BASE/ETH2USDrate;//
 
-    address owner; // array of managers?
-    
-    function p2pTaxiPreIco() public {
-        owner = msg.sender;
-    }
+    // Address of managers
+    mapping (address => bool) icoManagers;
 
+    function p2pTaxiPreIco() public {
+        icoManagers[msg.sender]=true;
+    }
+    
+    modifier onlyManager() {
+        // only ICO contract is allowed to proceed
+        require(icoManagers[msg.sender] == true);
+        _;
+    }
+    
+    function addManager(address manager) onlyManager public{
+        icoManagers[manager]=true;
+    }
+    
+    function delManager(address manager) onlyManager public{
+        require(msg.sender != manager); // гарантируем что хоть один менеджер останется
+        icoManagers[manager]=false;
+        delete icoManagers[manager];
+    }
+    
+    function checkManager(address manager) onlyManager view public returns (bool) {
+        return icoManagers[manager];
+    }
 }
